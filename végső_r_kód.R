@@ -485,6 +485,22 @@ mozgas_PE2
 mozgas_PE4
 mozgas_PE6
 mozgas_PE8
+
+# A mozgas kategóriájának előrejelzése a PE-változóból -> lambda értékek
+
+lambda_mozgas <- function(tab) {
+  n <- sum(tab)
+  E1 <- n - max(rowSums(tab))
+  E2 <- n - sum(apply(tab, 2, max))
+  return((E1 - E2) / E1)
+}
+
+lambda_mozgas(mozgas_PE2)
+lambda_mozgas(mozgas_PE4)
+lambda_mozgas(mozgas_PE6)
+lambda_mozgas(mozgas_PE8)
+
+
 #khí négyzettel ellenőrizni
 
 mozgas_x_PE2 <- chisq.test(mozgas_PE2, correct = FALSE)
